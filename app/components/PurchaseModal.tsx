@@ -1,61 +1,103 @@
-import type React from "react"
-import { useState } from "react"
-import { X } from "lucide-react"
+"use client";
+
+import type React from "react";
+import { useState, useEffect, useRef } from "react";
+import { X } from "lucide-react";
 
 interface PurchaseModalProps {
-  isOpen: boolean
-  onClose: () => void
-  planName: string
-  onSubmit: (formData: FormData) => void
+  isOpen: boolean;
+  onClose: () => void;
+  planName: string;
+  onSubmit: (formData: FormData) => void;
 }
 
 interface FormData {
-  name: string
-  email: string
-  phone: string
-  websiteType: string
-  technology: string
-  framework: string
-  deadline: string
-  message: string
+  name: string;
+  phone: string;
+  websiteType: string;
+  technology: string;
+  framework: string;
+  deadline: string;
+  message: string;
 }
 
-const PurchaseModal: React.FC<PurchaseModalProps> = ({ isOpen, onClose, planName, onSubmit }) => {
+const PurchaseModal: React.FC<PurchaseModalProps> = ({
+  isOpen,
+  onClose,
+  planName,
+  onSubmit,
+}) => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
-    email: "",
     phone: "",
     websiteType: "",
     technology: "",
     framework: "",
     deadline: "",
     message: "",
-  })
+  });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setFormData((prevState) => ({ ...prevState, [name]: value }))
-  }
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, onClose]);
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({ ...prevState, [name]: value }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    onSubmit(formData)
-  }
+    e.preventDefault();
+    onSubmit(formData);
+  };
 
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 overflow-y-auto">
-      <div className="bg-white rounded-lg p-8 max-w-md w-full m-4">
+      <div
+        ref={modalRef}
+        className="bg-white rounded-lg p-4 sm:p-8 max-w-4xl w-full mx-4 my-2 max-h-[90vh] overflow-y-auto"
+      >
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold">Purchase {planName} Plan</h2>
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
+          <button
+            onClick={onClose}
+            className="text-gray-500 hover:text-gray-700"
+          >
             <X size={24} />
           </button>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-full"
+        >
           <div>
-            <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
+            <label
+              htmlFor="name"
+              className="block text-gray-700 font-bold mb-2 text-sm"
+            >
               Name
             </label>
             <input
@@ -64,26 +106,15 @@ const PurchaseModal: React.FC<PurchaseModalProps> = ({ isOpen, onClose, planName
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg"
+              className="w-full px-3 py-2 border rounded-lg text-sm"
               required
             />
           </div>
           <div>
-            <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="phone" className="block text-gray-700 font-bold mb-2">
+            <label
+              htmlFor="phone"
+              className="block text-gray-700 font-bold mb-2 text-sm"
+            >
               Phone Number
             </label>
             <input
@@ -92,12 +123,15 @@ const PurchaseModal: React.FC<PurchaseModalProps> = ({ isOpen, onClose, planName
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg"
+              className="w-full px-3 py-2 border rounded-lg text-sm"
               required
             />
           </div>
           <div>
-            <label htmlFor="websiteType" className="block text-gray-700 font-bold mb-2">
+            <label
+              htmlFor="websiteType"
+              className="block text-gray-700 font-bold mb-2 text-sm"
+            >
               Website Type
             </label>
             <input
@@ -106,14 +140,17 @@ const PurchaseModal: React.FC<PurchaseModalProps> = ({ isOpen, onClose, planName
               name="websiteType"
               value={formData.websiteType}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg"
+              className="w-full px-3 py-2 border rounded-lg text-sm"
               placeholder="E.g., E-commerce, Portfolio, Blog"
               required
             />
           </div>
           <div>
-            <label htmlFor="technology" className="block text-gray-700 font-bold mb-2">
-              Preferred Technology
+            <label
+              htmlFor="technology"
+              className="block text-gray-700 font-bold mb-2 text-sm"
+            >
+              Preferred Programming Language
             </label>
             <input
               type="text"
@@ -121,12 +158,15 @@ const PurchaseModal: React.FC<PurchaseModalProps> = ({ isOpen, onClose, planName
               name="technology"
               value={formData.technology}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg"
-              placeholder="E.g., React, Vue, Angular"
+              className="w-full px-3 py-2 border rounded-lg text-sm"
+              placeholder="E.g., JavaScript, PHP, Dart"
             />
           </div>
           <div>
-            <label htmlFor="framework" className="block text-gray-700 font-bold mb-2">
+            <label
+              htmlFor="framework"
+              className="block text-gray-700 font-bold mb-2 text-sm"
+            >
               Preferred Framework (Optional)
             </label>
             <input
@@ -135,12 +175,15 @@ const PurchaseModal: React.FC<PurchaseModalProps> = ({ isOpen, onClose, planName
               name="framework"
               value={formData.framework}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg"
+              className="w-full px-3 py-2 border rounded-lg text-sm"
               placeholder="E.g., Next.js, Nuxt.js, Gatsby"
             />
           </div>
           <div>
-            <label htmlFor="deadline" className="block text-gray-700 font-bold mb-2">
+            <label
+              htmlFor="deadline"
+              className="block text-gray-700 font-bold mb-2 text-sm"
+            >
               Desired Deadline
             </label>
             <input
@@ -149,12 +192,15 @@ const PurchaseModal: React.FC<PurchaseModalProps> = ({ isOpen, onClose, planName
               name="deadline"
               value={formData.deadline}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg"
+              className="w-full px-3 py-2 border rounded-lg text-sm"
               required
             />
           </div>
-          <div>
-            <label htmlFor="message" className="block text-gray-700 font-bold mb-2">
+          <div className="col-span-1 sm:col-span-2">
+            <label
+              htmlFor="message"
+              className="block text-gray-700 font-bold mb-2 text-sm"
+            >
               Project Details
             </label>
             <textarea
@@ -162,20 +208,22 @@ const PurchaseModal: React.FC<PurchaseModalProps> = ({ isOpen, onClose, planName
               name="message"
               value={formData.message}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg"
+              className="w-full px-3 py-2 border rounded-lg text-sm"
               rows={4}
               placeholder="Please provide details about your website project, including its purpose, key features, and any specific requirements."
               required
             ></textarea>
           </div>
-          <button type="submit" className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">
+          <button
+            type="submit"
+            className="col-span-1 sm:col-span-2 w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 text-sm"
+          >
             Get Payment
           </button>
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PurchaseModal
-
+export default PurchaseModal;

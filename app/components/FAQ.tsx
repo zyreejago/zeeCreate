@@ -1,6 +1,7 @@
-import React from "react"
-import { ChevronDown, ChevronUp } from "lucide-react"
-import Head from "next/head"
+"use client";
+import React from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import Head from "next/head";
 
 const faqs = [
   {
@@ -24,14 +25,15 @@ const faqs = [
       "Yes, we have extensive experience in designing and developing e-commerce websites. We can create a custom online store that's user-friendly, secure, and optimized for conversions.",
   },
   {
-    question: "What's the difference between custom and template-based websites?",
+    question:
+      "What's the difference between custom and template-based websites?",
     answer:
       "Custom websites are built from scratch to meet your specific needs and branding, offering unique designs and functionalities. Template-based websites use pre-designed layouts that can be customized to some extent. While templates are quicker and cheaper to implement, custom websites offer more flexibility and uniqueness.",
   },
-]
+];
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = React.useState<number | null>(null)
+  const [openIndex, setOpenIndex] = React.useState<number | null>(null);
 
   const schemaData = {
     "@context": "https://schema.org",
@@ -44,7 +46,7 @@ const FAQ = () => {
         text: faq.answer,
       },
     })),
-  }
+  };
 
   return (
     <>
@@ -53,16 +55,22 @@ const FAQ = () => {
       </Head>
       <div className="bg-white py-12">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-8">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-8">
+            Frequently Asked Questions
+          </h2>
           <dl className="space-y-6">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-gray-200 pb-6">
                 <dt className="text-lg">
                   <button
-                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                    onClick={() =>
+                      setOpenIndex(openIndex === index ? null : index)
+                    }
                     className="flex justify-between items-start text-left w-full focus:outline-none"
                   >
-                    <span className="font-medium text-gray-900">{faq.question}</span>
+                    <span className="font-medium text-gray-900">
+                      {faq.question}
+                    </span>
                     <span className="ml-6 flex-shrink-0">
                       {openIndex === index ? (
                         <ChevronUp className="h-6 w-6 text-gray-500" />
@@ -83,8 +91,7 @@ const FAQ = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default FAQ
-
+export default FAQ;

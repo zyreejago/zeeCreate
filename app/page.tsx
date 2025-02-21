@@ -12,13 +12,17 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <Header />
-      <Hero />
-      <Features />
-      <Pricing />
-      <WebsiteBenefits />
-      <FAQ />
-      <Testimonials />
-      <CTA />
+      <div className="pt-16">
+        {" "}
+        {/* Add padding-top to account for fixed header */}
+        <Hero />
+        <Features />
+        <Pricing />
+        <WebsiteBenefits />
+        <FAQ />
+        <Testimonials />
+        <CTA />
+      </div>
       <Footer />
     </div>
   )

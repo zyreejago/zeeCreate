@@ -164,7 +164,7 @@ const Footer = () => {
         </div>
         <div className="mt-12 border-t border-gray-700 pt-8">
           <p className="text-base text-gray-400 xl:text-center">
-            &copy; {currentYear} WebCraft. All rights reserved.
+            &copy; {currentYear} ZeeCreate. All rights reserved.
           </p>
         </div>
       </div>
