@@ -73,18 +73,20 @@ const FAQ = () => {
                     </span>
                     <span className="ml-6 flex-shrink-0">
                       {openIndex === index ? (
-                        <ChevronUp className="h-6 w-6 text-gray-500" />
+                        <ChevronUp className="h-6 w-6 text-gray-500 transition-transform duration-300 transform rotate-180" />
                       ) : (
-                        <ChevronDown className="h-6 w-6 text-gray-500" />
+                        <ChevronDown className="h-6 w-6 text-gray-500 transition-transform duration-300" />
                       )}
                     </span>
                   </button>
                 </dt>
-                {openIndex === index && (
-                  <dd className="mt-2 pr-12">
-                    <p className="text-base text-gray-700">{faq.answer}</p>
-                  </dd>
-                )}
+                <dd
+                  className={`mt-2 pr-12 overflow-hidden transition-all duration-300 ease-in-out ${
+                    openIndex === index ? "max-h-40" : "max-h-0"
+                  }`}
+                >
+                  <p className="text-base text-gray-700">{faq.answer}</p>
+                </dd>
               </div>
             ))}
           </dl>

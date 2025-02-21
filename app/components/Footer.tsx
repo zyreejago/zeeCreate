@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AboutPage from "./Pages/About";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,7 +10,7 @@ const Footer = () => {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8 xl:col-span-1">
             <Link href="/" className="text-2xl font-bold">
-              WebCraft
+              ZeeCreate
             </Link>
             <p className="text-gray-400 text-sm">
               Creating stunning websites that drive results for your business.
@@ -63,7 +64,7 @@ const Footer = () => {
                 <ul className="mt-4 space-y-4">
                   <li>
                     <Link
-                      href="#"
+                      href="/About"
                       className="text-base text-gray-400 hover:text-white"
                     >
                       About

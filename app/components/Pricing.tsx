@@ -85,26 +85,26 @@ const Pricing = () => {
     if (!plan) return;
 
     const message = `Haloo zee
-New ${selectedPlan} Plan Order
+    New ${selectedPlan} Plan Order
 
-Customer Details:
-• Name: ${formData.name}
-• Phone: ${formData.phone}
+    Customer Details:
+    • Name: ${formData.name}
+    • Phone: ${formData.phone}
 
-Project Details:
-• Website Type: ${formData.websiteType}
-• Programming Language: ${formData.technology}
-• Framework: ${formData.framework || "Not specified"}
-• Desired Deadline: ${formData.deadline}
+    Project Details:
+    • Website Type: ${formData.websiteType}
+    • Programming Language: ${formData.technology}
+    • Framework: ${formData.framework || "Not specified"}
+    • Desired Deadline: ${formData.deadline}
 
-Selected Plan:
-• Plan: ${selectedPlan}
-• Price: Rp ${plan.price}
+    Selected Plan:
+    • Plan: ${selectedPlan}
+    • Price: Rp ${plan.price}
 
-Additional Information:
-${formData.message}
+    Additional Information:
+    ${formData.message}
 
-Thank you for choosing our service! We'll get back to you shortly to discuss your project further.`;
+    Thank you for choosing our service! We'll get back to you shortly to discuss your project further.`;
 
     const encodedMessage = encodeURIComponent(message);
     window.open(
@@ -129,8 +129,8 @@ Thank you for choosing our service! We'll get back to you shortly to discuss you
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`bg-white rounded-lg shadow-lg overflow-hidden flex flex-col relative ${
-                plan.isRecommended ? 'border-2 border-blue-500' : ''
+              className={`bg-white rounded-lg shadow-lg overflow-hidden flex flex-col relative transition-transform hover:scale-105 duration-300 ${
+                plan.isRecommended ? "border-2 border-blue-500" : ""
               }`}
             >
               {plan.isRecommended && (
@@ -169,9 +169,9 @@ Thank you for choosing our service! We'll get back to you shortly to discuss you
                 <button
                   onClick={() => handleGetStarted(plan.name)}
                   className={`block w-full rounded-md py-2 px-4 text-sm font-medium text-center text-white focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-                    plan.isRecommended 
-                    ? 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500'
-                    : 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500'
+                    plan.isRecommended
+                      ? "bg-blue-600 hover:bg-blue-700 focus:ring-blue-500"
+                      : "bg-blue-600 hover:bg-blue-700 focus:ring-blue-500"
                   }`}
                 >
                   Get started
