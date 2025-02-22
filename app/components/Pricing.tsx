@@ -84,31 +84,32 @@ const Pricing = () => {
     const plan = plans.find((p) => p.name === selectedPlan);
     if (!plan) return;
 
-    const message = `Haloo zee
-    New ${selectedPlan} Plan Order
+    const message = `*Hii zee!*
 
-    Customer Details:
+  New ${selectedPlan} Plan Order
+
+  *Customer Details:*
     • Name: ${formData.name}
     • Phone: ${formData.phone}
 
-    Project Details:
+  *Project Details:*
     • Website Type: ${formData.websiteType}
     • Programming Language: ${formData.technology}
     • Framework: ${formData.framework || "Not specified"}
     • Desired Deadline: ${formData.deadline}
 
-    Selected Plan:
+  *Selected Plan:*
     • Plan: ${selectedPlan}
     • Price: Rp ${plan.price}
 
-    Additional Information:
+  *Additional Information:*
     ${formData.message}
 
-    Thank you for choosing our service! We'll get back to you shortly to discuss your project further.`;
+  Thank you for choosing our service! We'll get back to you shortly to discuss your project further.`;
 
     const encodedMessage = encodeURIComponent(message);
     window.open(
-      `https://wa.me/62085847616095?text=${encodedMessage}`,
+      `https://wa.me/6288987244675?text=${encodedMessage}`,
       "_blank"
     );
     handleCloseModal();
@@ -181,7 +182,7 @@ const Pricing = () => {
           ))}
         </div>
         <div className="mt-10 text-center">
-          <a href="https://wa.me/6285847616095">
+          <a href="https://wa.me/6288987244675">
             <button className="inline-block bg-green-500 border border-transparent rounded-md py-3 px-8 text-lg font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
               Need a Custom Website? Contact Us
             </button>

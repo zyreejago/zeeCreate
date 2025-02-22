@@ -7,7 +7,7 @@ const faqs = [
   {
     question: "How long does it take to build a website?",
     answer:
-      "The timeline for building a website can vary depending on its complexity. A simple website might take 2-4 weeks, while a more complex one could take 8-12 weeks or more. We'll provide a more accurate timeline after discussing your specific needs.",
+      "The time required to build a website depends on its complexity. A simple website typically takes 1-7 days, while a more complex one can take 2-5 weeks. We'll provide a more accurate estimate after discussing your specific needs.",
   },
   {
     question: "Do you offer website maintenance services?",
@@ -29,6 +29,11 @@ const faqs = [
       "What's the difference between custom and template-based websites?",
     answer:
       "Custom websites are built from scratch to meet your specific needs and branding, offering unique designs and functionalities. Template-based websites use pre-designed layouts that can be customized to some extent. While templates are quicker and cheaper to implement, custom websites offer more flexibility and uniqueness.",
+  },
+  {
+    question: "Where is your portfolio?",
+    answer:
+      "I do have a portfolio, but I cannot share it as I need to protect the privacy of my clients or the company. At ZeeCreate, we highly prioritize the privacy of those who have placed an order with us.",
   },
 ];
 

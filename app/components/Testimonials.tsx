@@ -2,25 +2,39 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    role: "CEO, TechStart",
+    name: "Budi Santoso",
+    role: "Owner, Santoso Electronics Store",
     content:
-      "Working with this web development team was a game-changer for our startup. They delivered a stunning, functional website that perfectly captures our brand identity. The increase in user engagement and conversions has been remarkable!",
+      "Working with this web development team was a game-changer for my business. They delivered a stunning, functional website that perfectly represents my store. The increase in online inquiries has been remarkable!",
     rating: 5,
   },
   {
-    name: "Michael Chen",
-    role: "Owner, Chen's Cuisine",
+    name: "Siti Rahmawati",
+    role: "Owner, Simple Eatery",
     content:
-      "As a restaurant owner, I needed a website that would showcase our menu and allow for easy online ordering. The team delivered beyond my expectations, creating a beautiful, user-friendly site that has significantly boosted our online orders.",
+      "As a small restaurant owner, I needed a website to showcase my menu and allow easy online ordering. The team delivered beyond my expectations, creating a user-friendly site that has significantly boosted my orders.",
     rating: 5,
   },
   {
-    name: "Emily Rodriguez",
+    name: "Andi Pratama",
     role: "Freelance Photographer",
     content:
       "I'm amazed at how well they translated my vision into a stunning portfolio website. The design is sleek, the gallery feature is exactly what I needed, and I've received numerous compliments from clients. It's been a great investment for my business.",
+    rating: 4,
+  },
+  {
+    name: "Rina Setiawan",
+    role: "Owner, Rina Fashion Boutique",
+    content:
+      "Their expertise in web development has helped my boutique attract more customers online. The website is modern, easy to navigate, and has increased my sales significantly.",
     rating: 5,
+  },
+  {
+    name: "Dian Nugroho",
+    role: "Owner, Sejahtera Coffee",
+    content:
+      "I wanted a simple but attractive website for my coffee shop, and they delivered exactly that. The website is easy to use, showcases my menu beautifully, and has brought in more customers.",
+    rating: 4,
   },
 ];
 
@@ -52,23 +66,27 @@ const Testimonials = () => {
                 (testimonial, index) => (
                   <div
                     key={index}
-                    className="flex-shrink-0 w-full sm:w-96 mx-4 bg-white rounded-lg shadow-lg p-6"
+                    className="flex-shrink-0 w-full sm:w-96 mx-4 bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between h-72"
                   >
-                    <div className="flex items-center mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="h-5 w-5 text-yellow-400 fill-current"
-                        />
-                      ))}
+                    <div>
+                      <div className="flex items-center mb-4">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className="h-5 w-5 text-yellow-400 fill-current"
+                          />
+                        ))}
+                      </div>
+                      <blockquote className="text-gray-700 mb-4">
+                        "{testimonial.content}"
+                      </blockquote>
                     </div>
-                    <blockquote className="text-gray-700 mb-4">
-                      "{testimonial.content}"
-                    </blockquote>
-                    <div className="font-semibold text-gray-900">
-                      {testimonial.name}
+                    <div className="mt-auto">
+                      <div className="font-semibold text-gray-900">
+                        {testimonial.name}
+                      </div>
+                      <div className="text-gray-600">{testimonial.role}</div>
                     </div>
-                    <div className="text-gray-600">{testimonial.role}</div>
                   </div>
                 )
               )}
