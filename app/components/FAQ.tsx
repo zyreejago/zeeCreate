@@ -39,6 +39,7 @@ const faqs = [
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = React.useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
 
   const schemaData = {
     "@context": "https://schema.org",
@@ -65,32 +66,80 @@ const FAQ = () => {
           </h2>
           <dl className="space-y-6">
             {faqs.map((faq, index) => (
-              <div key={index} className="border-b border-gray-200 pb-6">
+              <div
+                key={index}
+                className="border-b border-gray-200 pb-6"
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
                 <dt className="text-lg">
                   <button
                     onClick={() =>
                       setOpenIndex(openIndex === index ? null : index)
                     }
-                    className="flex justify-between items-start text-left w-full focus:outline-none"
+                    className="flex justify-between items-start text-left w-full focus:outline-none group"
                   >
-                    <span className="font-medium text-gray-900">
+                    <span
+                      className={`
+                      font-medium transition-all duration-300 ease-in-out
+                      ${
+                        hoveredIndex === index
+                          ? "text-blue-600 translate-x-2"
+                          : "text-gray-900"
+                      }
+                    `}
+                    >
                       {faq.question}
                     </span>
                     <span className="ml-6 flex-shrink-0">
                       {openIndex === index ? (
-                        <ChevronUp className="h-6 w-6 text-gray-500 transition-transform duration-300 transform rotate-180" />
+                        <ChevronUp
+                          className={`
+                          h-6 w-6 transition-all duration-300
+                          ${
+                            hoveredIndex === index
+                              ? "text-blue-500 rotate-180 scale-110"
+                              : "text-gray-500"
+                          }
+                        `}
+                        />
                       ) : (
-                        <ChevronDown className="h-6 w-6 text-gray-500 transition-transform duration-300" />
+                        <ChevronDown
+                          className={`
+                          h-6 w-6 transition-all duration-300
+                          ${
+                            hoveredIndex === index
+                              ? "text-blue-500 scale-110"
+                              : "text-gray-500"
+                          }
+                        `}
+                        />
                       )}
                     </span>
                   </button>
                 </dt>
                 <dd
-                  className={`mt-2 pr-12 overflow-hidden transition-all duration-300 ease-in-out ${
-                    openIndex === index ? "max-h-40" : "max-h-0"
-                  }`}
+                  className={`
+                  overflow-hidden transition-all duration-500 ease-in-out
+                  ${
+                    openIndex === index
+                      ? "max-h-40 opacity-100"
+                      : "max-h-0 opacity-0"
+                  }
+                `}
                 >
-                  <p className="text-base text-gray-700">{faq.answer}</p>
+                  <p
+                    className={`
+                    text-base mt-2 pl-0 transition-all duration-300
+                    ${
+                      hoveredIndex === index
+                        ? "text-gray-800 pl-6"
+                        : "text-gray-700"
+                    }
+                  `}
+                  >
+                    {faq.answer}
+                  </p>
                 </dd>
               </div>
             ))}

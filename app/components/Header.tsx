@@ -82,7 +82,7 @@ const Header: React.FC = () => {
               <span className="font-poppins">ZeeCreate</span>
             </Link>
           </div>
-          <nav className="hidden md:block">
+          <nav className="hidden md:block font-poppins">
             <ul className="flex items-baseline space-x-8 font-poppins">
               {navItems.map((item) => (
                 <li key={item.name}>
