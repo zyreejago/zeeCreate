@@ -108,10 +108,7 @@ const Pricing = () => {
   Thank you for choosing our service! We'll get back to you shortly to discuss your project further.`;
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(
-      `https://wa.me/6288987244675?text=${encodedMessage}`,
-      "_blank"
-    );
+    window.open(`https://wa.me/6288987244675?text=${encodedMessage}`, "_blank");
     handleCloseModal();
   };
 
@@ -120,17 +117,17 @@ const Pricing = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            Choose the perfect plan for your business
+            Choose the perfect plan for your needs
           </h2>
           <p className="mt-4 text-xl text-gray-600">
-            We offer flexible pricing options to meet your specific needs
+            We offer flexible pricing options tailored to your needs
           </p>
         </div>
         <div className="mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-3">
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`bg-white rounded-lg shadow-lg overflow-hidden flex flex-col relative transition-transform hover:scale-105 duration-300 ${
+              className={`bg-white rounded-lg shadow-lg overflow-hidden flex flex-col relative md:hover:scale-105 md:transition-transform md:duration-300 ${
                 plan.isRecommended ? "border-2 border-blue-500" : ""
               }`}
             >
@@ -173,7 +170,7 @@ const Pricing = () => {
                     plan.isRecommended
                       ? "bg-blue-600 hover:bg-blue-700 focus:ring-blue-500"
                       : "bg-blue-600 hover:bg-blue-700 focus:ring-blue-500"
-                  }`}
+                  } active:bg-blue-800`}
                 >
                   Get started
                 </button>
@@ -183,7 +180,7 @@ const Pricing = () => {
         </div>
         <div className="mt-10 text-center">
           <a href="https://wa.me/6288987244675">
-            <button className="inline-block bg-green-500 border border-transparent rounded-md py-3 px-8 text-lg font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+            <button className="inline-block bg-green-500 border border-transparent rounded-md py-3 px-8 text-lg font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 active:bg-green-700">
               Need a Custom Website? Contact Us
             </button>
           </a>
