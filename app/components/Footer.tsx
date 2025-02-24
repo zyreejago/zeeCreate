@@ -75,7 +75,7 @@ const Footer = () => {
           <div className="md:flex md:items-center md:justify-between">
             <div className="flex space-x-6 md:order-2">
               <a
-                href="mailto:zeecreate@gmail.com"
+                href="mailto:info@zeecreate.my.id"
                 className="text-gray-400 hover:text-white"
               >
                 <span className="sr-only">Email</span>
