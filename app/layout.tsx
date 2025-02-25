@@ -11,8 +11,12 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "ZeeCreate - Web Development Services",
+  title: "ZeeCreate",
   description: "Professional web development services for your business",
+  icons: {
+    icon: "/icon.png",
+  },
+  viewport: "width=device-width, initial-scale=1", // Add this line
 };
 
 export default function RootLayout({
@@ -21,11 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} font-sans antialiased`}>
-        <Header /> {/* Tambahkan Header */}
+    <html lang="en" className={poppins.variable}>
+      <body className="font-sans antialiased">
+        <Header />
         <main className="min-h-screen">{children}</main>
-        <Footer /> {/* Tambahkan Footer */}
+        <Footer />
       </body>
     </html>
   );

@@ -1,16 +1,16 @@
-"use client";
+"use client"
 
-import type React from "react";
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import type React from "react"
+import { useState, useEffect } from "react"
+import Link from "next/link"
+import { useRouter, usePathname } from "next/navigation"
+import { Menu, X } from "lucide-react"
 
 const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
-  const router = useRouter();
-  const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState("")
+  const router = useRouter()
+  const pathname = usePathname()
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -18,60 +18,55 @@ const Header: React.FC = () => {
     { name: "Pricing", href: "/#pricing" },
     { name: "Testimonials", href: "/#testimonials" },
     { name: "Contact", href: "/#contact" },
-  ];
+  ]
 
   useEffect(() => {
     const handleScroll = () => {
-      if (pathname !== "/") return;
+      if (pathname !== "/") return
 
-      const sections = navItems
-        .filter((item) => item.href.startsWith("/#"))
-        .map((item) => item.href.substring(2));
-      let current = "";
+      const sections = navItems.filter((item) => item.href.startsWith("/#")).map((item) => item.href.substring(2))
+      let current = ""
 
       for (const section of sections) {
-        const element = document.getElementById(section);
+        const element = document.getElementById(section)
         if (element && window.scrollY >= element.offsetTop - 100) {
-          current = section;
+          current = section
         }
       }
 
-      setActiveSection(current);
-    };
+      setActiveSection(current)
+    }
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [pathname]);
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [pathname, navItems])
 
-  const handleNavClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
-    e.preventDefault();
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
     if (pathname !== "/" && href.startsWith("/#")) {
-      router.push("/");
+      router.push("/")
       setTimeout(() => {
-        const element = document.getElementById(href.substring(2));
+        const element = document.getElementById(href.substring(2))
         if (element) {
-          window.scrollTo({ top: element.offsetTop - 80, behavior: "smooth" });
+          window.scrollTo({ top: element.offsetTop - 80, behavior: "smooth" })
         }
-      }, 100);
+      }, 100)
     } else if (href.startsWith("/#")) {
-      const element = document.getElementById(href.substring(2));
+      const element = document.getElementById(href.substring(2))
       if (element) {
-        window.scrollTo({ top: element.offsetTop - 80, behavior: "smooth" });
+        window.scrollTo({ top: element.offsetTop - 80, behavior: "smooth" })
       }
     } else {
-      router.push(href);
+      router.push(href)
     }
-    setIsMenuOpen(false);
-  };
+    setIsMenuOpen(false)
+  }
 
   const isActive = (href: string) => {
-    if (href === "/") return pathname === "/" && !activeSection;
-    if (href.startsWith("/#")) return activeSection === href.substring(2);
-    return pathname === href;
-  };
+    if (href === "/") return pathname === "/" && !activeSection
+    if (href.startsWith("/#")) return activeSection === href.substring(2)
+    return pathname === href
+  }
 
   return (
     <header className="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
@@ -90,9 +85,7 @@ const Header: React.FC = () => {
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
                     className={`relative inline-block px-1 py-2 text-sm font-medium transition-colors duration-300 ${
-                      isActive(item.href)
-                        ? "text-blue-600"
-                        : "text-gray-600 hover:text-blue-600"
+                      isActive(item.href) ? "text-blue-600" : "text-gray-600 hover:text-blue-600"
                     }`}
                   >
                     {item.name}
@@ -111,11 +104,7 @@ const Header: React.FC = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
             >
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
@@ -149,7 +138,8 @@ const Header: React.FC = () => {
         </div>
       )}
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
+

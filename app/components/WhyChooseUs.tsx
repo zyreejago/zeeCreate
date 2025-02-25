@@ -1,11 +1,4 @@
-import {
-  CheckCircle,
-  Code,
-  Lightbulb,
-  ShieldCheck,
-  TrendingUp,
-  Users,
-} from "lucide-react";
+import { CheckCircle, Code, Lightbulb, ShieldCheck, TrendingUp, Users } from "lucide-react"
 
 const reasons = [
   {
@@ -50,19 +43,16 @@ const reasons = [
     icon: CheckCircle,
     color: "bg-gradient-to-br from-green-400 to-blue-500",
   },
-];
+]
 
 const WhyChooseUs = () => {
   return (
     <div id="why-choose-us" className="bg-gray-50 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            Why Choose ZeeCreate?
-          </h2>
+          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">Why Choose ZeeCreate?</h2>
           <p className="mt-4 text-xl text-gray-600">
-            We're more than just a web development agency. We're your partners
-            in online success.
+            We&apos;re more than just a web development agency. We&apos;re your partners
           </p>
         </div>
 
@@ -81,9 +71,7 @@ const WhyChooseUs = () => {
                 >
                   <reason.icon className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {reason.title}
-                </h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">{reason.title}</h3>
                 <p className="text-gray-600">{reason.description}</p>
               </div>
             </div>
@@ -91,7 +79,8 @@ const WhyChooseUs = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default WhyChooseUs;
+export default WhyChooseUs
+

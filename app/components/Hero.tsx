@@ -1,6 +1,7 @@
 "use client";
 
 import type React from "react";
+import Image from "next/image";
 
 const Hero = () => {
   const handleNavClick = (
@@ -75,10 +76,12 @@ const Hero = () => {
       </div>
       <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 p-4">
         <div className="h-56 w-full sm:h-72 md:h-96 lg:h-full overflow-hidden rounded-2xl shadow-2xl">
-          <img
-            className="h-full w-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
+          <Image
             src="https://images.unsplash.com/photo-1669023414162-5bb06bbff0ec?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Web design"
+            alt="Web development illustration showing programming languages and code editor"
+            width={1632}
+            height={1088}
+            className="h-full w-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
           />
         </div>
       </div>
